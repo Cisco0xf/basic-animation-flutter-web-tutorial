@@ -4,7 +4,6 @@ import 'package:basic_web_animation/commons/commons.dart';
 import 'package:basic_web_animation/commons/gaps.dart';
 import 'package:basic_web_animation/commons/screen_dimensions.dart';
 import 'package:basic_web_animation/constants/colors.dart';
-import 'package:basic_web_animation/constants/enums.dart';
 import 'package:basic_web_animation/constants/texts.dart';
 import 'package:basic_web_animation/presentation_layer/animated_side_bar/side_bar_manager.dart';
 import 'package:basic_web_animation/presentation_layer/animations/text_shadow.dart';
