@@ -123,45 +123,14 @@ class _ScrollToSectionState extends ConsumerState<ScrollToSection> {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Positioned(
-          top: 10,
-          left: 0.0,
-          right: 0.0,
-          child: SizedBox(
-            width: context.screenWidth * .6,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: List<Widget>.generate(
-                sections.length,
-                (index) {
-                  final SectionModel section = sections[index];
-                  return SectionTabItem(
-                    onClick: () async {
-                      ref
-                          .read(scrollableSectionProvider.notifier)
-                          .navigateTo(index);
-
-                      // await _scrollToTarget(currentSection);
-                      _controller.scrollTo(
-                        index: index,
-                        duration: const Duration(milliseconds: 400),
-                      );
-                    },
-                    section: section,
-                  );
-                },
-              ),
-            ),
-          ),
-        ),
         Positioned.fill(
-          top: context.screenHeight * .1,
           child: ScrollablePositionedList.builder(
             itemCount: sections.length,
             itemScrollController: _controller,
             itemBuilder: (context, index) {
               return Container(
-                padding: padding(50.0, from: From.horizontal),
+                padding: EdgeInsets.only(
+                    right: 50.0, left: 50.0, top: context.screenHeight * .1),
                 height: context.screenHeight,
                 width: context.screenWidth,
                 child: Column(
@@ -222,6 +191,37 @@ class _ScrollToSectionState extends ConsumerState<ScrollToSection> {
           ) */
           ,
         ),
+        Positioned(
+          top: 10,
+          left: 0.0,
+          right: 0.0,
+          child: SizedBox(
+            width: context.screenWidth * .6,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List<Widget>.generate(
+                sections.length,
+                (index) {
+                  final SectionModel section = sections[index];
+                  return SectionTabItem(
+                    onClick: () async {
+                      ref
+                          .read(scrollableSectionProvider.notifier)
+                          .navigateTo(index);
+
+                      // await _scrollToTarget(currentSection);
+                      _controller.scrollTo(
+                        index: index,
+                        duration: const Duration(milliseconds: 400),
+                      );
+                    },
+                    section: section,
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -261,7 +261,7 @@ class _SectionTabItemState extends State<SectionTabItem> {
                   border: Border.all(
                     color: _active ? AppColors.accent : AppColors.borderColor,
                   ),
-                  color: Colors.black38,
+                  color: Colors.black54,
                 ),
                 child: Clicker(
                   onClick: widget.onClick,
